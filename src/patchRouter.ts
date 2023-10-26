@@ -8,9 +8,11 @@ type RouterToPatch = SingletonRouter & { router: Router }
 
 const patchRouter = (Router: RouterToPatch, store: Store): (() => void) => {
   const unpatchedMethods = {
+    // @ts-ignore
     set: Router.router.set,
   }
 
+  // @ts-ignore
   Router.router.set = function (...args) {
     if (!unpatchedMethods.set) {
       return Promise.resolve()
@@ -24,6 +26,7 @@ const patchRouter = (Router: RouterToPatch, store: Store): (() => void) => {
   }
 
   return () => {
+    // @ts-ignore
     Router.router.set = unpatchedMethods.set
   }
 }
