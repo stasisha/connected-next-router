@@ -1,0 +1,14 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  release:
+    name: Release NPM Package
+    uses: dealroadshow/operations-github-actions/.github/workflows/workflow-semantic-release-js.yaml@main
+    secrets: inherit
+    with:
+      node-version: 16

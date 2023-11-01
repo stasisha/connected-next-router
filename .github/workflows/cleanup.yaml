@@ -1,0 +1,12 @@
+name: Cleanup
+
+on:
+  delete:
+    branches:
+      - prerelease-**
+
+jobs:
+  cleanup:
+    name: Cleanup
+    uses: dealroadshow/operations-github-actions/.github/workflows/workflow-semantic-release-cleanup-js.yaml@main
+    secrets: inherit
